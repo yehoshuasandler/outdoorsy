@@ -4,6 +4,11 @@ export type SearchRequest = {
   offset: number,
 }
 
+/**
+ * Not every property is accounted for,
+ * but most needed properties types should
+ * be defined here.
+ */
 export type SearchResponse = {
   data: SearchResponseDataElement[]
   included: SearchResponseIncludedPartial[]
@@ -46,6 +51,14 @@ export type SearchResponseIncludedAttributesPartial = {
   position: number,
 } & Record<string, unknown>
 
+
+/**
+ * This type was initially created to create a relationship between
+ * the rental and an associated primary image url. The primary image
+ * url was found to be defined in `SearchResponseAttributesPartial`.
+ * 
+ * This type and its children were kept for their future use cases.
+ */
 export type SearchResponseIncludedPartial = BaseEntity & {
   attributes: SearchResponseIncludedAttributesPartial,
 }
