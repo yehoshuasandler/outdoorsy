@@ -5,7 +5,7 @@ import { addKeyword } from './searchSlice'
 import { Keywords } from './Keyword'
 
 export const Search = () => {
-  const { filterKeywords } = useSelector((state: RootState) => state.search)
+  const { search } = useSelector((state: RootState) => state)
   const dispatch = useDispatch()
 
   const keywordRef = useRef<HTMLInputElement>(null)
@@ -45,7 +45,6 @@ export const Search = () => {
         onKeyDown={handleKeyDown}
         ref={keywordRef}
       />
-    {/* <input type='text' ref={keywordRef} onKeyDown={handleKeyDown} className=' text-slate-950' /> */}
-    <Keywords keywords={filterKeywords} />
+    <Keywords keywords={search.filterKeywords} />
   </form>
 }

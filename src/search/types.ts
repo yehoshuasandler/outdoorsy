@@ -5,5 +5,47 @@ export type SearchRequest = {
 }
 
 export type SearchResponse = {
-  data: unknown[]
+  data: SearchResponseDataElement[]
+  included: SearchResponseIncludedPartial[]
+}
+
+export enum EntityTypes {
+  IMAGES = 'images',
+  USAGE_BASED_ITEM = 'usage_based_item',
+  USERS = 'users',
+  RENTALS = 'rentals'
+}
+
+export type BaseEntity = {
+  id: string,
+  type: EntityTypes
+}
+
+export type SearchResponseRelationshipsPartial = {
+  images: { data: BaseEntity[]},
+  milage_usage_item: { data: BaseEntity }
+  owner: BaseEntity
+  primary_image: BaseEntity
+} & Record<string, unknown>
+
+export type SearchResponseAttributesPartial = {
+  description: string,
+  description_other: string,
+  primary_image_url: string,
+} & Record<string, unknown>
+
+export type SearchResponseDataElement = BaseEntity & {
+  type: EntityTypes.RENTALS
+  attributes: SearchResponseAttributesPartial,
+  relationships: SearchResponseRelationshipsPartial
+}
+
+export type SearchResponseIncludedAttributesPartial = {
+  rentalId: number,
+  url: string,
+  position: number,
+} & Record<string, unknown>
+
+export type SearchResponseIncludedPartial = BaseEntity & {
+  attributes: SearchResponseIncludedAttributesPartial,
 }
