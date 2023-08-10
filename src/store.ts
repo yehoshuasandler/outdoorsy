@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import searchSlice from './search/searchSlice'
+import propertyListSlice from './propertyList/propertyListSlice'
 
 export const store = configureStore({
   reducer: {
-    search: searchSlice
+    search: searchSlice,
+    properties: propertyListSlice
   }
 })
 

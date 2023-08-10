@@ -1,26 +1,14 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { PropertyListings } from './propertyList/PropertyListings';
 import { Search } from './search/Search';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="mx-auto mt-4 max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-3xl">
         <Search />
-      </header>
+        <PropertyListings />
+      </div>
     </div>
   );
 }

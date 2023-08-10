@@ -15,6 +15,7 @@ export const searchSlice = createSlice({
   reducers: {
     addKeyword: (state, action: PayloadAction<string>) => {
       const sanitizedKeyword = sanitizeUserInputString(action.payload)
+      if (!sanitizedKeyword) return
       const slicedKeywords = sanitizedKeyword.split(' ');
       const uniqueKeywords = slicedKeywords.filter(w => {
         return !state.filterKeywords.includes(sanitizedKeyword)
@@ -23,10 +24,15 @@ export const searchSlice = createSlice({
 
       state.filterKeywords = [...state.filterKeywords, ...uniqueKeywords]
       console.log('New keywords ', state.filterKeywords)
+    },
+    removeKeyword: (state, action: PayloadAction<string>) => {
+      const updatedKeywords = state.filterKeywords.filter(w => w !== action.payload)
+      state.filterKeywords = updatedKeywords
+      console.log('New keywords ', state.filterKeywords)
     }
   }
 })
 
-export const { addKeyword } = searchSlice.actions
+export const { addKeyword, removeKeyword } = searchSlice.actions
 
 export default searchSlice.reducer
