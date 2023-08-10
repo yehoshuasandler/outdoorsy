@@ -1,6 +1,5 @@
-import './App.css';
-import { PropertyListings } from './propertyList/PropertyListings';
-import { Search } from './search/Search';
+import { PropertyListings } from './propertyList/PropertyListings'
+import { Search } from './search/Search'
 
 function App() {
   return (
