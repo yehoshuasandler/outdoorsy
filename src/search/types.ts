@@ -29,8 +29,8 @@ export type SearchResponseRelationshipsPartial = {
 } & Record<string, unknown>
 
 export type SearchResponseAttributesPartial = {
+  name: string,
   description: string,
-  description_other: string,
   primary_image_url: string,
 } & Record<string, unknown>
 

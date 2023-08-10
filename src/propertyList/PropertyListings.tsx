@@ -11,8 +11,8 @@ const processSearchResponse = (response: SearchResponse): PropertyListing[] => {
 
   const propertyListings: PropertyListing[] = rentals.map(r => ({
     id: r.id,
-    name: r.attributes.description,
-    description: r.attributes.description_other,
+    name: r.attributes.name,
+    description: r.attributes.description,
     imageSrc: r.attributes.primary_image_url
   }))
 
@@ -25,13 +25,13 @@ export const Property = (props: PropertyListing) => <li className="px-6 py-4">
       <img
         src={props.imageSrc}
         alt={props.name}
-        className="h-16 w-16 border border-gray-300 bg-white text-gray-300"
+        className=" object-cover rounded h-16 w-16 border border-gray-300 bg-white text-gray-300"
         aria-hidden="true"
       />
     </div>
     <div>
-      <h4 className="text-lg font-bold">{props.name}</h4>
-      <p className="mt-1">
+      <h4 className="text-md font-bold text-gray-700">{props.name}</h4>
+      <p className="mt-1 truncate">
         {props.description}
       </p>
     </div>
