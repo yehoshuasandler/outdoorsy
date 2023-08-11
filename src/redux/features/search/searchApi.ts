@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import type { SearchRequest, SearchResponse } from '../search/types'
+import type { SearchRequest, SearchResponse } from './types'
 
 const defaultLimit = 10
 const defaultOffset = 0

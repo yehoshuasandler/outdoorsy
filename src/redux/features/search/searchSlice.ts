@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { SearchRequest } from './types'
-import { sanitizeUserInputString } from '../utils/sanatizeUserInput'
+import { sanitizeUserInputString } from '../../../utils/sanatizeUserInput'
 
 const initialState: SearchRequest = {
   filterKeywords: [],
@@ -23,12 +23,10 @@ export const searchSlice = createSlice({
 
 
       state.filterKeywords = [...state.filterKeywords, ...uniqueKeywords]
-      console.log('New keywords ', state.filterKeywords)
     },
     removeKeyword: (state, action: PayloadAction<string>) => {
       const updatedKeywords = state.filterKeywords.filter(w => w !== action.payload)
       state.filterKeywords = updatedKeywords
-      console.log('New keywords ', state.filterKeywords)
     }
   }
 })

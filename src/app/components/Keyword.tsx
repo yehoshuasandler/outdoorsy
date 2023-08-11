@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { removeKeyword } from './searchSlice'
+import { removeKeyword } from '../../redux/features/search/searchSlice'
 
 type Props = { value: string }
 
@@ -9,7 +9,6 @@ export const Keyword = (props: Props) => {
 
   const handleRemove = (e: React.MouseEvent) => {
     e.preventDefault()
-    console.log(props.value)
     dispatch(removeKeyword(props.value))
   }
 

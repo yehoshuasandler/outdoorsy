@@ -1,7 +1,9 @@
+'use client'
+
 import React, { useRef } from 'react'
-import type { RootState } from '../store'
+import type { RootState } from '../../redux/store'
 import { useSelector, useDispatch } from 'react-redux'
-import { addKeyword } from './searchSlice'
+import { addKeyword } from '../../redux/features/search/searchSlice'
 import { Keywords } from './Keyword'
 
 export const Search = () => {

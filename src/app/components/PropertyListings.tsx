@@ -1,9 +1,11 @@
-import type { RootState } from '../store'
+'use client'
+
+import type { RootState } from '../../redux/store'
 import { useDispatch, useSelector } from 'react-redux'
-import { PropertyListing } from './types'
-import { useGetRentalsByKeywordsQuery } from '../search/searchApi'
-import { SearchResponse } from '../search/types'
-import { setProperties } from './propertyListSlice'
+import { PropertyListing } from '../../redux/features/propertyList/types'
+import { useGetRentalsByKeywordsQuery } from '../../redux/features/search/searchApi'
+import { SearchResponse } from '../../redux/features/search/types'
+import { setProperties } from '../../redux/features/propertyList/propertyListSlice'
 import { useEffect } from 'react'
 
 const processSearchResponse = (response: SearchResponse): PropertyListing[] => {
