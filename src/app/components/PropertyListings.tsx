@@ -7,6 +7,9 @@ import { useGetRentalsByKeywordsQuery } from '../../redux/features/search/search
 import { SearchResponse } from '../../redux/features/search/types'
 import { setProperties } from '../../redux/features/propertyList/propertyListSlice'
 import { useEffect } from 'react'
+import NoResults from './NoResults'
+import LoadingResults from './LoadingResults'
+import ErrorDisplay from './Error'
 
 const processSearchResponse = (response: SearchResponse): PropertyListing[] => {
   const rentals = response.data
@@ -52,6 +55,12 @@ export const PropertyListings = () => {
       dispatch(setProperties(updatedListings))
     }
   }, [data, isLoading, error, dispatch])
+
+  if (error) return <ErrorDisplay />
+  else if (isLoading) return <LoadingResults />
+  else if (!properties.listings.length && search.filterKeywords.length) {
+    return <NoResults />
+  }
 
   return <div className="overflow-hidden rounded-md bg-white mt-2 mb-2 shadow-md">
     <ul className="divide-y divide-gray-200">
